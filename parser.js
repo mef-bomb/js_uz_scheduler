@@ -11,15 +11,19 @@ function beep() {
 const interval = 10000;
 
 // refresh GV-Token workaround
-setInterval(() => {
+function refreshToken() {
     const fakeWindow = window.open('http://booking.uz.gov.ua/ru/');
-    setTimeout(() => fakeWindow5.close(), interval);
-}, interval * 60);
+    setTimeout(() => fakeWindow.close(), interval);
+}
 
 // repeater
 const iterator = setInterval(() => {
     Common.ajax(`${GV.page.module}/search/`, { form: frmSearch._form }, resp => {
         if (resp.error) return;
+        if (!resp.value) {
+            refreshToken();
+            return;
+        }
         const trains = new TTrains();
         trains.show(resp.value);
         var successTrains = resp.value.filter(conditionalLambda);
