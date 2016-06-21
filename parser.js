@@ -26,7 +26,7 @@ const iterator = setInterval(() => {
         }
         const trains = new TTrains();
         trains.show(resp.value);
-        var successTrains = resp.value.filter(conditionalLambda);
+        const successTrains = resp.value.filter(conditionalLambda);
         successTrains.forEach(val => console.log(val));
         if (successTrains.length > 0) {
             beep();
