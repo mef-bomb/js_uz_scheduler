@@ -28,7 +28,7 @@ class UZSpamer {
      */
     constructor(interval = 10000) {
         this.interval = interval;
-        this.startSpam()
+        this.startSpam();
     }
 
     /**
@@ -78,7 +78,7 @@ class UZSpamer {
                 model: train.model,
                 date_dep: train.from.date,
                 round_trip: frmSearch.isRoundTrip(),
-                another_ec: frmSearch.isAnotherEc()
+                another_ec: frmSearch.isAnotherEc(),
             };
             globalCommon.ajax(GV.page.module + '/coaches/', { params: params }, resp => {
                 if (resp.error) {
@@ -95,6 +95,7 @@ class UZSpamer {
                 Helper.placesMax = resp.places_max;
                 train.setCoaches(resp.coaches);
 
+                // need to be global =(
                 trainPopup = new TTrainPopup(resp);
                 trainPopup.show();
             });
