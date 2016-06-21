@@ -13,7 +13,7 @@ const interval = 10000;
 // refresh GV-Token workaround
 setInterval(() => {
     const fakeWindow = window.open(GV.page.module);
-    setTimeout(() => fakeWindow.close(), interval);
+    fakeWindow.close();
 }, interval * 60);
 
 // repeater
