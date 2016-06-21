@@ -13,22 +13,22 @@ const interval = 10000;
 // refresh GV-Token workaround
 setInterval(() => {
     const fakeWindow = window.open(GV.page.module);
-    fakeWindow.close();
+    setTimeout(() => fakeWindow.close(), interval);
 }, interval * 60);
 
 // repeater
 const iterator = setInterval(() => {
-	Common.ajax(`${GV.page.module}/search/`, { form: frmSearch._form }, resp => {
-		if (resp.error) return;
+    Common.ajax(`${GV.page.module}/search/`, { form: frmSearch._form }, resp => {
+        if (resp.error) return;
         const trains = new TTrains();
-		trains.show(resp.value);
-		var successTrains = resp.value.filter(conditionalLambda);
-		successTrains.forEach(val => console.log(val));
-		if (successTrains.length > 0) {
+        trains.show(resp.value);
+        var successTrains = resp.value.filter(conditionalLambda);
+        successTrains.forEach(val => console.log(val));
+        if (successTrains.length > 0) {
             beep();
             beep();
             beep();
             clearInterval(iterator);
         }
-	});
+    });
 }, interval);
