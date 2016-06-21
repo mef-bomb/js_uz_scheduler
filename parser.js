@@ -12,7 +12,7 @@ const interval = 10000;
 
 // refresh GV-Token workaround
 setInterval(() => {
-    const fakeWindow = window.open(GV.page.module);
+    const fakeWindow = window.open('http://booking.uz.gov.ua/ru/');
     fakeWindow.close();
 }, interval * 60);
 
