@@ -117,7 +117,7 @@ class UZSpamer {
      */
     refreshToken() {
         const fakeWindow = window.open('http://booking.uz.gov.ua/ru/');
-        setTimeout(() => fakeWindow.close(), interval);
+        setTimeout(() => fakeWindow.close(), this.interval);
     }
 
     /**
